@@ -130,7 +130,7 @@ public class TestMoyo {
             addedCounter += 1;
         }
 
-        $(MoyoElements.Header.compareButton).click();
+        $(MoyoElements.Header.compareButton).click(ClickOptions.usingJavaScript()); //usingJavaScript to click through Google popup
 
         //Check if item count is correct
         $(MoyoElements.CompareList.itemCounter).shouldBe(Condition.exactText(String.valueOf(addedCounter)));
