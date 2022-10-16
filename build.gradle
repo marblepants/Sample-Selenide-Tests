@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.9.6"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    implementation group: 'com.codeborne', name: 'selenide', version: '6.8.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+    testImplementation 'io.qameta.allure:allure-junit5:2.19.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(Test){
+    useJUnitPlatform()
+}
+
+
+task chrome (type: Test){
+    systemProperties['selenide.browser'] = 'chrome'
+}
+
+task firefox (type: Test){
+    systemProperties['selenide.browser'] = 'firefox'
+}
