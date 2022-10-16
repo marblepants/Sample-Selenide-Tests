@@ -35,15 +35,19 @@ public class TestMoyo {
         $(MoyoElements.SearchResults.nThResultBuy(1)).scrollIntoView(false);
         sleep(3000); //code breaks without sleep. performance?
         $(MoyoElements.SearchResults.nThResultBuy(1)).click(ClickOptions.usingJavaScript());
+        sleep(3000);
         $(MoyoElements.SearchResults.closeCart).click(ClickOptions.usingJavaScript());
+        sleep(3000);
 
         myCounter += 1;
         $(MoyoElements.Header.cartCounter).shouldBe(Condition.exactText(String.valueOf(myCounter)));
 
         //Add 4 more items, check if cart has 5 items
         for (int i = 2; i<7; i++) {
-            $(MoyoElements.SearchResults.nThResultBuy(i)).click();
-            $(MoyoElements.SearchResults.closeCart).click();
+            $(MoyoElements.SearchResults.nThResultBuy(i)).click(ClickOptions.usingJavaScript());
+            sleep(3000);
+            $(MoyoElements.SearchResults.closeCart).click(ClickOptions.usingJavaScript());
+            sleep(3000);
             myCounter += 1;
         }
         $(MoyoElements.Header.cartCounter).shouldBe(Condition.exactText(String.valueOf(myCounter)));

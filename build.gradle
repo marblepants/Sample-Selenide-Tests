@@ -30,10 +30,23 @@ tasks.withType(Test){
 }
 
 
-task chrome (type: Test){
-    systemProperties['selenide.browser'] = 'chrome'
+task crossbrowser() {
+    dependsOn('chrome', 'firefox')
+    doLast {
+        System.out.println("Cross-browser test complete")
+    }
 }
 
-task firefox (type: Test){
-    systemProperties['selenide.browser'] = 'firefox'
+task chrome (type: Test) {
+    doLast {
+    systemProperties['selenide.browser'] = 'chrome'
+    System.out.println("All Chrome tests complete")
+    }
+}
+
+task firefox (type: Test) {
+    doLast {
+        systemProperties['selenide.browser'] = 'firefox'
+        System.out.println("All Firefox tests complete")
+    }
 }
