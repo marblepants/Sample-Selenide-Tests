@@ -1,7 +1,4 @@
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
 import com.codeborne.selenide.ex.InvalidStateException;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -125,7 +122,6 @@ public class TestMoyo {
             }
 
             addedPhonesId.add($(MoyoElements.ProductPage.itemId).getText());
-            System.out.println("New phone added! New ID list:" + addedPhonesId.toString());
 
             addedCounter += 1;
         }
