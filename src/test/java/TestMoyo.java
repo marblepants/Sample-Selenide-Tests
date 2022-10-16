@@ -32,10 +32,10 @@ public class TestMoyo {
         $(MoyoElements.Header.searchField).setValue("macbook").pressEnter();
 
         //Add 1st result, check if cart has 1 item
-        $(MoyoElements.SearchResults.nThResultBuy(1)).click();
-        sleep(1000); //code breaks without sleep. performance?
-        $(MoyoElements.SearchResults.closeCart).click();
-        sleep(200);
+        $(MoyoElements.SearchResults.nThResultBuy(1)).scrollIntoView(false);
+        sleep(3000); //code breaks without sleep. performance?
+        $(MoyoElements.SearchResults.nThResultBuy(1)).click(ClickOptions.usingJavaScript());
+        $(MoyoElements.SearchResults.closeCart).click(ClickOptions.usingJavaScript());
 
         myCounter += 1;
         $(MoyoElements.Header.cartCounter).shouldBe(Condition.exactText(String.valueOf(myCounter)));
@@ -43,9 +43,7 @@ public class TestMoyo {
         //Add 4 more items, check if cart has 5 items
         for (int i = 2; i<7; i++) {
             $(MoyoElements.SearchResults.nThResultBuy(i)).click();
-            sleep(1000); //code breaks without sleep. performance?
             $(MoyoElements.SearchResults.closeCart).click();
-            sleep(200);
             myCounter += 1;
         }
         $(MoyoElements.Header.cartCounter).shouldBe(Condition.exactText(String.valueOf(myCounter)));
