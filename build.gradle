@@ -38,15 +38,15 @@ task crossbrowser() {
 }
 
 task chrome (type: Test) {
-    doLast {
     systemProperties['selenide.browser'] = 'chrome'
+    doLast {
     System.out.println("All Chrome tests complete")
     }
 }
 
 task firefox (type: Test) {
+    systemProperties['selenide.browser'] = 'firefox'
     doLast {
-        systemProperties['selenide.browser'] = 'firefox'
         System.out.println("All Firefox tests complete")
     }
 }
